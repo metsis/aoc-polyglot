@@ -2,6 +2,7 @@ import System.Random
 import Data.List
 
 -- starting data
+outputFile = "calendar.txt"
 days = [1..25] -- aoc runs Dec 1st-25th
 languagesWithWeights = [ -- add languages with desired weights (can be any number)
   ("haskell", 8),
@@ -35,6 +36,14 @@ getLanguagesWithDays lw = do
 
 main = do
   r <- getLanguagesWithDays languagesWithWeights
-  putStrLn $ "\n      ~~~~~ Your AoC calendar ~~~~~    \n"
-  mapM_ (\(l, d) -> putStrLn $ "Day " ++ show d ++ ": " ++ l) r
-  putStrLn $ "\n      ~~~~~ Have fun! ~~~~~    \n"
+  writeFile outputFile $ "\n      ~~~~~ Your AoC calendar ~~~~~    \n\n"
+  mapM_ (\(l, d) -> appendFile outputFile $ "Day " ++ show d ++ ": " ++ l ++ "\n") r
+  appendFile outputFile $ "\n      ~~~~~ Have fun! ~~~~~    \n"
+  printCalendar
+  putStrLn "Calendar generated - you can find it later from calendar.txt"
+
+
+printCalendar :: IO ()
+printCalendar = do
+  contents <- readFile outputFile
+  putStrLn contents
