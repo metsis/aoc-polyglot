@@ -35,5 +35,6 @@ getLanguagesWithDays lw = do
 
 main = do
   r <- getLanguagesWithDays languagesWithWeights
-  putStrLn $ "      ~~~~~ Your AoC calendar ~~~~~    \n\n"
+  putStrLn $ "\n      ~~~~~ Your AoC calendar ~~~~~    \n"
   mapM_ (\(l, d) -> putStrLn $ "Day " ++ show d ++ ": " ++ l) r
+  putStrLn $ "\n      ~~~~~ Have fun! ~~~~~    \n"

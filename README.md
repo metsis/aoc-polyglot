@@ -5,7 +5,7 @@
 ## description
 
   *inputs*
-  `languages` = your desired languages with weights
+  `languagesWithWeights` = your desired languages with weights
 
   *outputs*
   `calendar` = a calendar that has randomly picked languages for each day,
