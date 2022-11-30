@@ -27,7 +27,7 @@ shuffle xs = do randomPosition <- getStdRandom(randomR (0, length xs - 1))
 getLanguagesWithDays lw = do
   let weightSum = sum[x | (_,x) <- lw]
   let daysCount = length days
-  let daysPerLanguage = [(l, round (fromIntegral w / fromIntegral weightSum * fromIntegral daysCount)) | (l, w) <- lw]
+  let daysPerLanguage = [(l, ceiling (fromIntegral w / fromIntegral weightSum * fromIntegral daysCount)) | (l, w) <- lw]
   let spreadLanguages = concat [[l | x <- [1..d]] | (l, d) <- daysPerLanguage]
   sl <- shuffle spreadLanguages
   sd <- shuffle days
